@@ -1,17 +1,17 @@
-import React from 'react';
-import { Card, CardContent, Grid, ListItemButton, ListItemText, Checkbox } from "@mui/material";
+import React from "react";
+import "../component/todos.css";
+import {Card,CardContent,Grid,ListItemButton,ListItemText,Checkbox} from "@mui/material";
 
-const Todos = ({ todos, deleteTodo }) => {
+const Todos = ({ todos }) => {
   const todoList = todos.length ? (
     todos.map((todo) => {
       return (
-        <Grid item xs={12} key={todo.id}>
+        <Grid key={todo.id}>
           <Card>
+            {/* Remember, we set the local state of this todo item when the user submits the form in 
+            AddTodo.js. All we need to do is return the todo list item */}
             <CardContent>
-              <ListItemButton onClick={() => deleteTodo(todo.id)}>
-                <Checkbox />
-                <ListItemText primary={todo.content} />
-              </ListItemButton>
+              <span style={{ padding: "50px" }}>add todo content</span>
             </CardContent>
           </Card>
         </Grid>
@@ -20,14 +20,12 @@ const Todos = ({ todos, deleteTodo }) => {
   ) : (
     <p>You have no todo's left</p>
   );
-
+  // Lastly, return the todoList constant that we created above to show all of the items on the screen.
   return (
     <div className="todoCollection" style={{ padding: "10px" }}>
-      <Grid container spacing={2}>
-        {todoList}
-      </Grid>
+      {todoList} {/*call todo list here*/}
     </div>
   );
-}
-
+};
+  
 export default Todos;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./About.css";
-import profilePic from "../assets/aarav.jpg";
+import profile from "../assets/aarav.jpg";
 
 export default class About extends Component {
   render() {
@@ -10,19 +10,21 @@ export default class About extends Component {
           <div className="centered">
             <img 
               className="profile_image"
-              src={profilePic}
+              src={profile}
               alt="Profile Pic"
             />
           </div>
         </div>
         <div className="split right">
           <div className="centered">
-            <div className="name_title">Your Name</div>
+            <div className="name_title">Aarav Joglekar</div>
             <div className="brief_description">
-              {/* Details about you go here */}
-              <p>Interests: Playing lots of cricket, eating amazing food, talking to new people!</p>
-              <p>Fun Fact: I lived in amsterdam for 6 months!</p>
-              <p>Hobbies: Playing cricket and stealing all your money at the poker table</p>
+              Hi, I'm Aarav Joglekar, a computer science major at Georgia Tech with a passion
+              for machine learning, especially in finance. I love playing tennis, honing my poker 
+              skills, teaching others, and indulging in amazing culinary experiences. I'm known
+              for being calm, composed, detail-oriented, and efficient. Whether I'm diving into 
+              complex algorithms or enjoying a lighthearted game of cards, I always bring a sharp
+              sense of humor and an approachable personality to everything I do.
             </div>
           </div>
         </div>

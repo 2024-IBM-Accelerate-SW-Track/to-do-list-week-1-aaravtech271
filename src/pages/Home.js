@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import AddTodo from "../components/AddTodo";
-import Todos from "../components/Todos";
+import AddTodo from "../component/AddTodo"; 
+import Todos from "../component/todos"; 
 import "./Home.css";
 
 class Home extends Component {
@@ -18,21 +18,12 @@ class Home extends Component {
       todos: new_list,
     });
   };
-
-  deleteTodo = (id) => {
-    const todos = this.state.todos.filter(todo => {
-      return todo.id !== id;
-    });
-    this.setState({
-      todos: todos
-    });
-  }
-
   render() {
     return (
       <div className="Home">
-        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
-        <AddTodo addTodo={this.addTodo} />
+        <h1>Todo's</h1>
+        <Todos todos={this.state.todos} /> {/* Use the current state for todos */}
+        <AddTodo addTodo={this.addTodo} /> {/* Use the addTodo function */}
       </div>
     );
   }
