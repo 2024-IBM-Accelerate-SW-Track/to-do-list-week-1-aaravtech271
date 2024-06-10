@@ -1,43 +1,46 @@
-import { render, screen, fireEvent} from '@testing-library/react';
-import { unmountComponentAtNode } from 'react-dom';
-import App from './App';
+import React, { Component } from 'react';
+import { Button, TextField } from "@mui/material";
 
-let container = null;
-beforeEach(() => {
-  // setup a DOM element as a render target
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
+class AddTodo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      content: ''
+    };
+  }
 
-afterEach(() => {
-  // cleanup on exiting
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
+  handleChange = (e) => {
+    this.setState({ content: e.target.value });
+  }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.addTodo({
+      content: this.state.content
+    });
+    this.setState({ content: '' });
+  }
 
+  render() {
+    return (
+      <div>
+        <TextField
+          label="Add New Item"
+          variant="outlined"
+          onChange={this.handleChange}
+          value={this.state.content}
+        />
+        <Button
+          style={{ marginLeft: "10px" }}
+          onClick={this.handleSubmit}
+          variant="contained"
+          color="primary"
+        >
+          Add
+        </Button>
+      </div>
+    );
+  }
+}
 
-
- test('test that App component doesn\'t render dupicate Task', () => {
-  render(<App />);
- });
-
- test('test that App component doesn\'t add a task without task name', () => {
-  render(<App />);
- });
-
- test('test that App component doesn\'t add a task without due date', () => {
-  render(<App />);
- });
-
-
-
- test('test that App component can be deleted thru checkbox', () => {
-  render(<App />);
- });
-
-
- test('test that App component renders different colors for past due events', () => {
-  render(<App />);
- });
+export default AddTodo;
