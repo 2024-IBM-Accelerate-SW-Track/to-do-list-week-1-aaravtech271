@@ -1,48 +1,44 @@
-import React, { Component } from "react";
-import { Button, TextField } from "@mui/material";
+import React from 'react';
+import { render, screen, fireEvent} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import App from './App';
 
-class AddTodo extends Component {
-    constructor() {
-      super();
-      this.state = {
-        content: "",
-      };
-    }
-    handleChange = (event) => {
-      this.setState({
-        content: event.target.value,
-      });
-    };
-    handleSubmit = (event) => {
-      event.preventDefault();
-      if (this.state.content.trim()) {
-        this.props.addTodo(this.state);
-        this.setState({
-          content: "",
-        });
-      }
-    };
-    render() {
-      return (
-        <div>
-          <TextField 
-            label="Add New Item" 
-            variant="outlined"
-            onChange={this.handleChange} // call handleChange here
-            value={this.state.content} // set the content state here 
-            data-testid="new-item-textfield"
-          />
-          <Button
-            style={{ marginLeft: "10px" }}
-            onClick={this.handleSubmit} // call handleSubmit here
-            variant="contained"
-            color="primary"
-            data-testid="new-item-button">
-            Add  
-          </Button>
-        </div>
-      );
-    }
-  }
-  
-  export default AddTodo;
+let container = null;
+beforeEach(() => {
+  // setup a DOM element as a render target
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  // cleanup on exiting
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
+
+
+
+
+ test('test that App component doesn\'t render dupicate Task', () => {
+  render(<App />);
+ });
+
+ test('test that App component doesn\'t add a task without task name', () => {
+  render(<App />);
+ });
+
+ test('test that App component doesn\'t add a task without due date', () => {
+  render(<App />);
+ });
+
+
+
+ test('test that App component can be deleted thru checkbox', () => {
+  render(<App />);
+ });
+
+
+ test('test that App component renders different colors for past due events', () => {
+  render(<App />);
+ });
