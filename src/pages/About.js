@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./About.css";
-import aarav from "../assets/aarav.JPG";
+import aarav from "../assets/aarav.jpg";
   
 export default class About extends Component {
   render() {
