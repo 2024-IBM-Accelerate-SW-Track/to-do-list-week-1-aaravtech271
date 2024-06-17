@@ -1,6 +1,7 @@
 import { render, screen, fireEvent} from '@testing-library/react';
 import { unmountComponentAtNode } from 'react-dom';
 import App from './App';
+import React from 'react';
 
 let container = null;
 beforeEach(() => {
@@ -16,10 +17,7 @@ afterEach(() => {
   container = null;
 });
 
-
-
-
- test('test that App component doesn\'t render dupicate Task', () => {
+ test('test that App component doesn\'t render duplicate Task', () => {
   render(<App />);
  });
 
@@ -31,12 +29,9 @@ afterEach(() => {
   render(<App />);
  });
 
-
-
- test('test that App component can be deleted thru checkbox', () => {
+ test('test that App component can be deleted through checkbox', () => {
   render(<App />);
  });
-
 
  test('test that App component renders different colors for past due events', () => {
   render(<App />);
